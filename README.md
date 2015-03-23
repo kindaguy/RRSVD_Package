@@ -4,7 +4,9 @@ This repository contains the implementation of the method described in the paper
 [![Linux Build Status](https://travis-ci.org/qubit-ulm/ebs.svg?branch=master)](https://travis-ci.org/qubit-ulm/ebs)
 
 # Introduction 
-From the paper
+
+The computational complexity of the Singular Value Decomposition of an m x n matrix $A$ is $\mathcal{O}(m \cdot n^2)$. For large matrices, the SVD can therefore require a significative amount of time. In many situations the full SVD is not needed: only the largest singular values (and corresponding left- and right-singular vectors) are actually needed.  It is possible to avoid the \emph{full} SVD of $A$ and compute only the first $k$ singular values and corresponding singular vectors by using \emph{Truncated SVD} methods; such methods are standard tools in data-classification algorithms, signal-processing and other research fields. The  Implicitly Restarted Arnoldi Method  and the Lanczos-Iteration \cite{larsen98} algorithms, both belonging to the Krylov-subspace iterative methods are two examples.  The Reduced-Rank Singular Value Decomposition (RRSVD),  originally presented in by N. Halko \emph{et al.} \cite{halko11}, is a \emph{randomized} truncated SVD. It is particularly suited to decompose structured matrices, such as the one appearing in some simulation of non-critical quantum systems (e.g. the Time-Evolving Block-Decimation algorithm, based on the Matrix Product States formalism). Most interestingly, the algorithm is insensitive to the quality of the random number generator used, delivers highly accurate results and is, despite its random nature, very stable: the probability of failure can be made arbitrarily small with a minor impact on the computational resource required.
+
 # Usage
 The RRSVD routine comes in three versions: 
 
