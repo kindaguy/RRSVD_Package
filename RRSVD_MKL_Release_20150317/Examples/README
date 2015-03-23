@@ -1,0 +1,120 @@
+This directory contains the source files to generate two executables, through the command
+
+make clean
+make all
+
+The executables are described below. In the Makefile you will find an example of the calling commands for both the programs. Entries:
+
+make exec: executes TEBD_Trials.x
+make generateSample: executes buildSample.x
+
+=====================
+-TEBD_Trials.x
+=====================
+This program reads a double precision complex matrix in input from a binary file and produces the standard LAPack SVD and the truncated SVD, RRSVD. The type of the matrix can be changed by modifying the source code.
+
+Input parameters:
+
++input_file:    a binary file that contains the matrix to decompose. 
+                The format of the file is:
+                num_rows (4 Bytes integer)
+                num_cols (4 Bytes integer)
+                num_rows*num_cols double precision complex numbers (16 Bytes), column major format.
+
++retained:      integer: initial rank of the approximation.
+
++q:             integer: number of iteration steps to use.
+
++tolerance:     float: tolerated approximation error (float number: e.g. 1.0, 10., 1e-6)
+
++SVD:           (boolean: 1/yes, 0/no) do the standard SVD (MKL_SVD)
+
++seed:          (boolean:1/yes, 0/no) "randomly" set the initial seed of the random number generator. By setting this
+                to 0 you can reproduce results.
+
++num_dec:       the number of RRSVD to do. In this way you can generate many RRSVD of the same input matrix to test the satbility yourself.
+
+++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++
+
+Output: results are stored in different files
+
+Standard SVD (if required)
+
++A_SVD_timing:  binary file with one double precision float number (8 bytes): the time required by the MKL SVD.
+
+
++decSA:         binary file: the singular values
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer): is 1
+                num_rows double precision real numbers (8 Bytes): the singular_values.
+
++decUA:         binary file: the matrix U
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix U in column-major representation
+
++decVTA:        binary file: the matrix VT
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix VT in column-major representation
+
+RRSVD: as many output as num_dec 
+
+
++RRSVD_timing_#.dat:  binary file with one double precision float numner (8 bytes): the time required by the RRSVD.
+
++RRdecS#.dat:        binary file: the singular values
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer): is 1
+                num_rows double precision real numbers (8 Bytes): the singular_values.
+
++RRdecU#.dat:        binary file: the matrix U
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix U in column-major representation
+
++RRdecVT#.dat:       binary file: the matrix VT
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix VT in column-major representation
+=====================================================================================================================
+=====================================================================================================================
+
+
+==============
+buildSample.x
+==============
+
+This program generates a double precision random matrix starting from a set of singular values or with singular values decreasing as 1/x and normalized to unity. 
+
+Input: 
+
++nrows:     (integer) number of rows
+
++ncols:     (integer) number of columns
+
++seed:      (boolean:1/yes, 0/no) "randomly" set the initial seed of the random number generator. By setting this
+                to 0 you can reproduce results.
+
++file_out:  name of the output file
+
++file_in:   (optional) file containing the singular values:
+            Format: binary file
+            (4 Bytes integer) num_sv
+            num_sv double precision real values (8 Bytes): the singular values.
+
+++++++++++++++++++++++++++
+++++++++++++++++++++++++++
+
+Output: 
+
+a binary file named as required in input, containing the random matrix having the given singular values. Format: as decU.dat produced by TEBD_Trials.x
+
+matrixU.dat: binary file the randomly generated U matrix. Same format as decU.dat.
+
+matrixV.dat:  binary file the randomly generated V matrix. Same format as decU.dat.
+ 
+You can change the type of the matrices by modifying the source file.
+
+

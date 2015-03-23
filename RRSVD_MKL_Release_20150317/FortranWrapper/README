@@ -1,0 +1,21 @@
+/************************************************/
+/*              FORTRAN WRAPPER                 */
+/************************************************/
+
+This folder contains a Fortran module that provides a wrapper to use the RRSVD routines directly in Fortran code.
+
+As a matter of fact, interfacing Fortran and C++ code is not so strightforward when the C++ code allocates memory dynamically. We hope that this tool can save you some time if your code is in Fortran!
+
+Content:
+
++dyn_array.f90:    source file containing the interface module for the call of z_rrsvd (double complex specialization of RRSVD).
+
++timeWrap.f90:     source file with a program that examplifies the use of the wrapper.
+
++Makefile:         compiles (make) the module dyn_array.f90 and timeWrap.f90 and executes (make exec) timeWrap.x.
+
+Upon execution shows some timing measure and the first singular value of the input matrix only.
+
+The output of the RRSVD routine is stored in three binary files. Look at the RRSVD library documentation (RRSVD README file) for more information about the file format.
+
+For the time being only the double precision complex version is available. The implementation of the wrappes for other matrix types is under development. The user can easily do it by himself.
