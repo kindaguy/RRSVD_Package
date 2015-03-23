@@ -2,7 +2,6 @@
 This repository contains the implementation of the method described in the paper 'Fast Time-Evolving Block-Decimation algorithm through Reduced-Rank Radomized Singular Value Decomposition'
 
 [![Linux Build Status](https://travis-ci.org/qubit-ulm/ebs.svg?branch=master)](https://travis-ci.org/qubit-ulm/ebs)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/of2bssgx58e8qyi3?svg=true)](https://ci.appveyor.com/project/jrosskopf/ebs)
 
 # Introduction 
 From the paper
@@ -41,10 +40,3 @@ gcc >=4.7
 
 #Warning
 While the building of the MKL- and CUDA-RRSVD is rather standard, the creation of the BL-RRSVD library requires a little bit of attention. In the RRSVD_BL_Release folder we include a precompiled version of LAPacke and CBLAS. The libraries have been compiled with the GNU gcc 4.7 compiler and should work on most Linux distributions with gcc 4.7 installed. Before compiling this libraries we have set complex types to be represented as a struct, with the real and imaginary part accessible via the field names .re and .im. This is one of the options provided by the LAPacke installation. If you recompile the LAPacke and CBLAS libraries pay attention to set the right complex numbers representation in the appropriate configuration files.
-
-
-
-![Output plot of the demos](https://github.com/qubit-ulm/ebs/blob/master/demo_plot_full.png)
-![Takeout of the demo plot](https://github.com/qubit-ulm/ebs/blob/master/demo_plot_outtake.png)
-
-
