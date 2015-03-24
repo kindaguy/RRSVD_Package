@@ -1,7 +1,7 @@
 This directory contains the source files to generate two executables, through the command
 
 make clean
-make all
+make 
 
 The executables are described below. In the Makefile you will find an example of the calling commands for both the programs. Entries:
 
