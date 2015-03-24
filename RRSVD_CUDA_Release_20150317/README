@@ -1,0 +1,21 @@
+RRSVD: a fast and reliable truncated Singular Value Decomposition tool.
+
+
+
+In this folder you find all what you need to generate the CUDA based RRSVD_Package.
+
+The CUDA-RRSVD uses the CUDA, CUBLAS and CULA libraries, which cannot be distributed, since they are copyrighted. 
+
+The RRSVD-Package is written in C++ (C++11 standard). The code is extremely simple and can be easily modified by non-expert C++ programmers. 
+
+
+The folder is organized as follows:
+
+
++RRSVD: contains all the files needed to generate the library (which is a shared object, libdecompositionsmkl.so). Read the README in this folder for instructions.
+
++Examples: contains a couple of programs that allow you to test RRSVD on sample matrices and to generate sample matrices yourself; you will also find a Fortran wrapper for the call of rrsvd.
+
++Data: some sample matrices coming from real simulations of an open quantum system with the Time-Evolving Block-Decimation (TEBD) algorithm.
+
++FortranWrapper:  includes a module that allows to call RRSVD from Fortran code together with an example program.

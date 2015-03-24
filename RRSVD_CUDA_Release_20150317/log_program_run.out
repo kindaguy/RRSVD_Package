@@ -1,0 +1,284 @@
+PBS: working directory is /eurora/home/userexternal/dtamasce/RRSVD_CUDA_Release_20150317
+LD_LIBRARY_PATH=./:/eurora/home/userexternal/dtamasce/cula/lib64:/cineca/prod/compilers/cuda/5.0.35/none/lib64:/cineca/prod/compilers/cuda/5.0.35/none/lib:/cineca/prod/compilers/intel/cs-xe-2013/binary/lib/intel64/:/cineca/prod/compilers/intel/cs-xe-2013/binary/composer_xe_2013_sp1.0.080/mkl/lib/intel64/:/cineca/prod/compilers/gnu/4.6.3/none/lib64 ./main.x /eurora/home/userexternal/dtamasce/RRSVD_CUDA_Release_20150317/Data/theta_900_0.dat 100 2 1e-3 1 1 5
+
+Prepare an input matrix A.
+
+Allocating U,V,S
+
+Initializing CUBLAS
+Initializing CULA
+
+Generating random matrices......done!
+
+Reorthogonalizing random matrices....Calling culaDgeqrf
+
+Info = 0
+
+ Tempo richiesto da cula QR: 0.032240
+
+Info = 0
+
+Riorthogonalization completed!
+
+720 1
+
+Building the case-study matrix A...
+Call to cublasDgemm: 
+
+cublasDgemm completed!!!
+
+Call to cublasDgemm: 
+
+cublasDgemm completed!!!
+
+ Matrix dimension: 900
+900
+
+Call SVD...
+
+900, 900
+
+Call tamaGESVD
+
+...done!
+
+...done!
+
+ Tempo richiesto da culaSVD: 1.117329
+
+Main: error 0
+
+ Matrix dimension: 900
+900
+
+Call z_rrsvd
+
+The number of columns of A is 900.
+ Number of retained dimensions:200
+
+Generating Omega matrix...
+CUDA generates the matrix Omega
+...done!
+
+Randomized power iteration: q= 2...
+max = 0.000000000000007, tolerance = 0.001000000000000, Q.ncols = 200 matA.ncols-incr = 700
+
+ max= 0.000000000000007 esco da onlineCheck.
+...done!
+
+Starting direct SVD...
+200, 200
+
+Call tamaGESVD
+
+...done!
+
+time required for DirectSVD:0.111636seconds
+time overall time required for the randomized SVD:0.255553seconds
+cuda RRSVD finished 
+
+end of RRSVD 
+
+End z_rrsvd
+
+900
+
+200
+
+200
+
+1
+
+RRdecU0.dat
+
+RRdecS0.dat
+
+RRdecVT0.dat
+
+ Matrix dimension: 900
+900
+
+Call z_rrsvd
+
+The number of columns of A is 900.
+ Number of retained dimensions:200
+
+Generating Omega matrix...
+CUDA generates the matrix Omega
+...done!
+
+Randomized power iteration: q= 2...
+max = 0.000000000000007, tolerance = 0.001000000000000, Q.ncols = 200 matA.ncols-incr = 700
+
+ max= 0.000000000000007 esco da onlineCheck.
+...done!
+
+Starting direct SVD...
+200, 200
+
+Call tamaGESVD
+
+...done!
+
+time required for DirectSVD:0.110446seconds
+time overall time required for the randomized SVD:0.25551seconds
+cuda RRSVD finished 
+
+end of RRSVD 
+
+End z_rrsvd
+
+900
+
+200
+
+200
+
+1
+
+RRdecU1.dat
+
+RRdecS1.dat
+
+RRdecVT1.dat
+
+ Matrix dimension: 900
+900
+
+Call z_rrsvd
+
+The number of columns of A is 900.
+ Number of retained dimensions:200
+
+Generating Omega matrix...
+CUDA generates the matrix Omega
+...done!
+
+Randomized power iteration: q= 2...
+max = 0.000000000000007, tolerance = 0.001000000000000, Q.ncols = 200 matA.ncols-incr = 700
+
+ max= 0.000000000000007 esco da onlineCheck.
+...done!
+
+Starting direct SVD...
+200, 200
+
+Call tamaGESVD
+
+...done!
+
+time required for DirectSVD:0.110246seconds
+time overall time required for the randomized SVD:0.256509seconds
+cuda RRSVD finished 
+
+end of RRSVD 
+
+End z_rrsvd
+
+900
+
+200
+
+200
+
+1
+
+RRdecU2.dat
+
+RRdecS2.dat
+
+RRdecVT2.dat
+
+ Matrix dimension: 900
+900
+
+Call z_rrsvd
+
+The number of columns of A is 900.
+ Number of retained dimensions:200
+
+Generating Omega matrix...
+CUDA generates the matrix Omega
+...done!
+
+Randomized power iteration: q= 2...
+max = 0.000000000000007, tolerance = 0.001000000000000, Q.ncols = 200 matA.ncols-incr = 700
+
+ max= 0.000000000000007 esco da onlineCheck.
+...done!
+
+Starting direct SVD...
+200, 200
+
+Call tamaGESVD
+
+...done!
+
+time required for DirectSVD:0.110712seconds
+time overall time required for the randomized SVD:0.254612seconds
+cuda RRSVD finished 
+
+end of RRSVD 
+
+End z_rrsvd
+
+900
+
+200
+
+200
+
+1
+
+RRdecU3.dat
+
+RRdecS3.dat
+
+RRdecVT3.dat
+
+ Matrix dimension: 900
+900
+
+Call z_rrsvd
+
+The number of columns of A is 900.
+ Number of retained dimensions:200
+
+Generating Omega matrix...
+CUDA generates the matrix Omega
+...done!
+
+Randomized power iteration: q= 2...
+max = 0.000000000000007, tolerance = 0.001000000000000, Q.ncols = 200 matA.ncols-incr = 700
+
+ max= 0.000000000000007 esco da onlineCheck.
+...done!
+
+Starting direct SVD...
+200, 200
+
+Call tamaGESVD
+
+...done!
+
+time required for DirectSVD:0.111629seconds
+time overall time required for the randomized SVD:0.258213seconds
+cuda RRSVD finished 
+
+end of RRSVD 
+
+End z_rrsvd
+
+900
+
+200
+
+200
+
+1
+
+RRdecU4.dat
+
+RRdecS4.dat
+
+RRdecVT4.dat

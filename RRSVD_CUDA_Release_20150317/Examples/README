@@ -1,0 +1,81 @@
+This directory contains the source files to generate an executable, through the command
+
+make clean
+make
+
+The executable is  described below. In the Makefile you will find an example of the calling commands for the program. Entries:
+
+make exec: executes TEBD_Trials.x
+
+=====================
+-TEBD_Trials.x
+=====================
+This program reads a double precision complex matrix in input from a binary file and produces the standard LAPack SVD and the truncated SVD, RRSVD. The type of the matrix can be changed by modifying the source code.
+
+Input parameters:
+
++input_file:    a binary file that contains the matrix to decompose. 
+                The format of the file is:
+                num_rows (4 Bytes integer)
+                num_cols (4 Bytes integer)
+                num_rows*num_cols double precision complex numbers (16 Bytes), column major format.
+
++retained:      integer: initial rank of the approximation.
+
++q:             integer: number of iteration steps to use.
+
++tolerance:     float: tolerated approximation error (float number: e.g. 1.0, 10., 1e-6)
+
++SVD:           (boolean: 1/yes, 0/no) do the standard SVD (MKL_SVD)
+
++seed:          (boolean:1/yes, 0/no) "randomly" set the initial seed of the random number generator. By setting this
+                to 0 you can reproduce results.
+
++num_dec:       the number of RRSVD to do. In this way you can generate many RRSVD of the same input matrix to test the satbility yourself.
+
+++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++
+
+Output: results are stored in different files
+
+Standard SVD (if required)
+
++A_SVD_timing:  binary file with one double precision float number (8 bytes): the time required by the MKL SVD.
+
+
++decSA:         binary file: the singular values
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer): is 1
+                num_rows double precision real numbers (8 Bytes): the singular_values.
+
++decUA:         binary file: the matrix U
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix U in column-major representation
+
++decVTA:        binary file: the matrix VT
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix VT in column-major representation
+
+RRSVD: as many output as num_dec 
+
+
++RRSVD_timing_#.dat:  binary file with one double precision float numner (8 bytes): the time required by the RRSVD.
+
++RRdecS#.dat:        binary file: the singular values
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer): is 1
+                num_rows double precision real numbers (8 Bytes): the singular_values.
+
++RRdecU#.dat:        binary file: the matrix U
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix U in column-major representation
+
++RRdecVT#.dat:       binary file: the matrix VT
+                num_rows: (4 Bytes integer)
+                num_cols: (4 Bytes integer)
+                num_rows double precision complex numbers (16 Bytes): the matrix VT in column-major representation
+=====================================================================================================================
+

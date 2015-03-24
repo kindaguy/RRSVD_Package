@@ -1,0 +1,65 @@
+The RRSVD-CUDA library can be generated through the command 
+
+make
+
+that genreates the file libdecompositionscuda.so
+
+Pay attention to the right CUDA, CULA and CUBLAS libraries location and adjust the paths accordingly in the Makefile.
+
+The file  Include/ZRRSVD.h lists the interface of the library.
+
+There are four specialization of RRSVD, for different matrix types:
+
+z_rrsvd: double precision complex
+c_rrsvd: single precision complex
+d_rrsvd: double precision real
+s_rrsvd: single precision real
+
+An example of how the functions have to be called is provided in the file Examples/TEBD_Trials.cpp.
+
+
+Here we document the double complex RRSVD function:
+
+//Double precision complex
+
+void z_rrsvd_(integer *nrowsA, integer *ncolsA, __lpkdoublecomplex **rawA, integer *relevant, integer *niter, __lpkdoublereal *tolerance, integer * nrowsU, integer * ncolsU, __lpkdoublecomplex **rawU,integer * nrowsS, integer * ncolsS, __lpkdoublereal **rawS,integer * nrowsVT, integer * ncolsVT, __lpkdoublecomplex **rawVT);
+
+
+Parameters:
+
+Input:
+
++nrowsA:    pointer to integer: number of rows of the input matrix
+
++ncolsA:    pointer to integer: numer of columns of the input matrix
+
++rawA:      pointer to the array containig the input matrix elements. The input matrix must be represented in column-major format.
+
++relevant:  pointer to integer: the rank of approximation
+
++niter:     pointer to integer: the parameter q
+
++tolerance: pointer to real: the tolerated approximation error 
+
+++++++++++++
+++++++++++++
+
+Output:  the matrices U,S and VT (A -> U. S . VT) are allocate dynamically by the z_rrsvd routine
+
++nrowsU:    pointer to integer: number of rows of the output matrix U
+
++ncolsU:    pointer to integer: numer of columns of the output matrix U
+
++rawU:      pointer to the double precision complex array containig the U  matrix elements. Column-major format.
+
+!!!!Same for VT
+
++nrowsS:    pointer to integer: number of rows of the output matrix S
+
++ncolsS:    pointer to integer: numer of columns of the output matrix S (it is 1 on output)
+
++rawS:      pointer to the double precision real array containig the singular values.
+
+
+REMARK: the ?_rrsvd functions do not clear the memory. The library interface include some memory cleaning tool. Their use is up to you.
+
