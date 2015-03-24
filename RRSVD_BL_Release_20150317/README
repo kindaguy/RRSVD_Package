@@ -5,7 +5,7 @@ RRSVD: a fast and reliable truncated Singular Value Decomposition tool.
 In this folder you find all what you need to generate the BLAS-LAPack based RRSVD_Package.
 
 The RRSVD-Package is written in C++ (C++11 standard). The code is extremely simple and can be easily modified by non-expert C++ programmers. 
-
+The reference BLAS and LAPack libraries are provided as well.
 
 The folder is organized as follows:
 
