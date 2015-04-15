@@ -43,3 +43,6 @@ RRSVD-Package has the following requirements on Unix systems
 
 #Warning
 While the building of the MKL- and CUDA-RRSVD is rather standard, the creation of the BL-RRSVD library requires a little bit of attention. In the RRSVD_BL_Release folder we include a precompiled version of LAPacke and CBLAS. The libraries have been compiled with the GNU gcc 4.7 compiler and should work on most Linux distributions with gcc 4.7 installed. Before compiling this libraries we have set complex types to be represented as a struct, with the real and imaginary part accessible via the field names .r and .i. This is one of the options provided by the LAPacke installation. If you recompile the LAPacke and CBLAS libraries pay attention to set the right complex numbers representation in the appropriate configuration files.
+
+#Attribution
+Please cite , (2015) <http://arxiv.org/abs/1504.00992>_ if you find this code useful in your research. 
