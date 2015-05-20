@@ -865,12 +865,12 @@ QRfactLaPack<T> * onlineCheck(tamaClss::genMatrix<T> & matA, tamaClss::genMatrix
 #ifdef CUDA_ENABLED
     curandGenerator_t cuGen;
     curandCreateGenerator(&cuGen,CURAND_RNG_PSEUDO_MTGP32)/*MT19937 if cc>3.2*/;
-    curandSetPseudoRandomGeneratorSeed(cuGen,time(NULL));
+    curandSetPseudoRandomGeneratorSeed(cuGen,time(NULL)+100);
 
 #else
 	mt19937_64 generator;
 	//Set rndGen seed
-	generator.seed(time(NULL));
+	generator.seed(time(NULL)+100);
 	//Normal distribution
 	//__ATTENTION: minimal waste of space and time
 	normal_distribution<__lpkdoublereal> norm_distribution_double(0.,1.);
